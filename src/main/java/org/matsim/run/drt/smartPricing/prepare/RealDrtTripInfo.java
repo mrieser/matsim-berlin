@@ -4,6 +4,8 @@ import org.matsim.api.core.v01.events.ActivityEndEvent;
 import org.matsim.api.core.v01.events.PersonArrivalEvent;
 import org.matsim.contrib.drt.passenger.events.DrtRequestSubmittedEvent;
 
+import java.util.Objects;
+
 /**
  * @author : zmeng
  * @date :
@@ -71,4 +73,5 @@ public class RealDrtTripInfo {
     public double getRealDrtTotalTripTime(){
         return this.lastArrivalEvent.getTime() - realActivityEndEvent.getTime();
     }
+
 }

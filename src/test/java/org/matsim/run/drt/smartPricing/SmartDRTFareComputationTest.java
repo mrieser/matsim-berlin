@@ -64,6 +64,8 @@ public class SmartDRTFareComputationTest {
         Config config = RunDrtOpenBerlinScenario.prepareConfig(args);
 
         ConfigUtils.addOrGetModule(config, SmartDrtFareConfigGroup.class);
+       // ConfigUtils.addOrGetModule(config,SmartDrtFareConfigGroup.class).setPenaltyStrategy(false);
+        // ConfigUtils.addOrGetModule(config,SmartDrtFareConfigGroup.class).setRewardStrategy(false);
         Scenario scenario = RunDrtOpenBerlinScenario.prepareScenario(config);
 
         for( Person person : scenario.getPopulation().getPersons().values() ){

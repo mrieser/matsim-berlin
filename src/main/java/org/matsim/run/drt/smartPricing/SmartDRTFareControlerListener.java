@@ -10,7 +10,6 @@ import org.matsim.core.controler.listener.IterationEndsListener;
 import org.matsim.core.controler.listener.IterationStartsListener;
 import org.matsim.core.controler.listener.ShutdownListener;
 import org.matsim.run.drt.smartPricing.prepare.ProfitUtility;
-import org.matsim.run.drt.smartPricing.prepare.TripsInfoCollector;
 
 /**
  * @author : zmeng
@@ -28,8 +27,6 @@ public class SmartDRTFareControlerListener implements IterationEndsListener, Ite
     private Scenario scenario;
     @Inject
     private ProfitUtility profitUtility;
-    @Inject
-    private TripsInfoCollector tripsInfoCollector;
 
     @Override
     public void notifyIterationEnds(IterationEndsEvent iterationEndsEvent) {
@@ -45,13 +42,11 @@ public class SmartDRTFareControlerListener implements IterationEndsListener, Ite
     public void notifyIterationStarts(IterationStartsEvent iterationStartsEvent) {
         if(iterationStartsEvent.getIteration() == scenario.getConfig().controler().getLastIteration()){
             eventsManager.addHandler(profitUtility);
-            eventsManager.addHandler(tripsInfoCollector);
         }
     }
 
     @Override
     public void notifyShutdown(ShutdownEvent shutdownEvent) {
         profitUtility.writeProfitInfo();
-        tripsInfoCollector.collect();
     }
 }

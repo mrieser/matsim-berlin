@@ -21,7 +21,6 @@ package org.matsim.run.drt.smartPricing;
 
 import org.matsim.core.controler.AbstractModule;
 import org.matsim.run.drt.smartPricing.prepare.ProfitUtility;
-import org.matsim.run.drt.smartPricing.prepare.TripsInfoCollector;
 
 /**
  * @author : zmeng
@@ -32,7 +31,6 @@ public class SmartDRTFareModule extends AbstractModule {
     public void install() {
         this.bind(SmartDRTFareComputation.class).asEagerSingleton();
         this.bind(ProfitUtility.class).asEagerSingleton();
-        this.bind(TripsInfoCollector.class).asEagerSingleton();
         addEventHandlerBinding().to(SmartDRTFareComputation.class);
         addControlerListenerBinding().to(SmartDRTFareControlerListener.class);
     }

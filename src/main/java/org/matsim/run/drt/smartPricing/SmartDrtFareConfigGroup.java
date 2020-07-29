@@ -88,6 +88,15 @@ public class SmartDrtFareConfigGroup extends ReflectiveConfigGroup {
     @StringSetter(MAX_DRT_DISTANCE)
     public void setMaxDrtDistance(double maxDrtDistance) { this.maxDrtDistance = maxDrtDistance; }
 
+    @StringGetter(PENALTY_STRATEGY)
+    public boolean isPenaltyStrategy() { return penaltyStrategy; }
+    @StringSetter(PENALTY_STRATEGY)
+    public void setPenaltyStrategy(boolean penaltyStrategy) { this.penaltyStrategy = penaltyStrategy; }
+    @StringGetter(REWARD_STRATEGY)
+    public boolean isRewardStrategy() { return rewardStrategy; }
+    @StringSetter(REWARD_STRATEGY)
+    public void setRewardStrategy(boolean rewardStrategy) { this.rewardStrategy = rewardStrategy; }
+
     @StringGetter(COST_PER_VEHICLE_PER_METER)
     public double getCostPerVehPerMeter() { return costPerVehPerMeter; }
     @StringSetter(COST_PER_VEHICLE_PER_METER)
@@ -104,7 +113,7 @@ public class SmartDrtFareConfigGroup extends ReflectiveConfigGroup {
     @StringGetter(PENALTY_FACTOR)
     public double getPenaltyFactor() { return penaltyFactor; }
     @StringSetter(PENALTY_FACTOR)
-    public void setPenalty(double penaltyFactor) { this.penaltyFactor = penaltyFactor; }
+    public void setPenaltyFactor(double penaltyFactor) { this.penaltyFactor = penaltyFactor; }
     @StringGetter(PENALTY_RATIO_THRESHOLD)
     public double getPenaltyRatioThreshold() { return penaltyRatioThreshold; }
     @StringSetter(PENALTY_RATIO_THRESHOLD)
@@ -125,7 +134,7 @@ public class SmartDrtFareConfigGroup extends ReflectiveConfigGroup {
     @StringGetter(REWARD_FACTOR)
     public double getRewardFactor() { return rewardFactor; }
     @StringSetter(REWARD_FACTOR)
-    public void setReward(double rewardFactor) { this.rewardFactor = rewardFactor; }
+    public void setRewardFactor(double rewardFactor) { this.rewardFactor = rewardFactor; }
     @StringGetter(REWARD_RATIO_THRESHOLD)
     public double getRewardRatioThreshold() { return rewardRatioThreshold; }
     @StringSetter(REWARD_RATIO_THRESHOLD)
