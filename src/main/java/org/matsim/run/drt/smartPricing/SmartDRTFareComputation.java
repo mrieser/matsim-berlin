@@ -116,7 +116,7 @@ public class SmartDRTFareComputation implements DrtRequestSubmittedEventHandler,
                 if (!estimatePtTrip.isHasPtTravelTime()) {
                     estimatePtTrip.setHasPtTravelTime(true);
                     List planElements = tripRouter.calcRoute(TransportMode.pt, estimatePtTrip.getDepartureFacility(), estimatePtTrip.getArrivalFacility(), estimatePtTrip.getDepartureTime(), scenario.getPopulation().getPersons().get(event.getPersonId()));
-                    double ptTravelTime = planElements.stream().filter(planElement -> (planElement instanceof Leg)).mapToDouble(planElement -> ((Leg) planElement).getTravelTime()).sum();
+                    double ptTravelTime = planElements.stream().filter(planElement -> (planElement instanceof Leg)).mapToDouble(planElement -> ((Leg) planElement).getTravelTime().seconds()).sum();
                     estimatePtTrip.setPtTravelTime(ptTravelTime);
                     newCalculatedNumOfPtTrips++;
                 }

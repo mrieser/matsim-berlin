@@ -56,7 +56,7 @@ public class ProfitUtility implements PersonMoneyEventHandler, LinkLeaveEventHan
         this.it2timeBin2VariableCost.put(iteration, this.variableCostCalculator.getTimeBin2VariableCost());
         this.it2timeBin2CostType2Cost.put(iteration, this.variableCostCalculator.getTimeBin2Type2Cost());
 
-        int timeBinSize = getTimeBin(scenario.getConfig().qsim().getEndTime());
+        int timeBinSize = getTimeBin(scenario.getConfig().qsim().getEndTime().seconds());
         for (int tem = 0; tem <= timeBinSize; tem++) {
             this.it2timeBin2Revenues.get(iteration).put(tem,0.);
         }
@@ -166,7 +166,7 @@ public class ProfitUtility implements PersonMoneyEventHandler, LinkLeaveEventHan
 
     public Map<Integer, Double> getProfit(int iteration) {
         Map<Integer, Double> timeBin2Profit = new HashMap<>();
-        int timeBinSize = getTimeBin(scenario.getConfig().qsim().getEndTime());
+        int timeBinSize = getTimeBin(scenario.getConfig().qsim().getEndTime().seconds());
         for (int tem = 0; tem <= timeBinSize; tem++) {
             timeBin2Profit.put(tem, getProfit(iteration, tem));
         }
@@ -267,7 +267,7 @@ public class ProfitUtility implements PersonMoneyEventHandler, LinkLeaveEventHan
         private Map<Integer, Double> timeBin2VariableCost = new HashMap<>();
 
         public VariableCostCalculator() {
-            int timeBinSize = getTimeBin(scenario.getConfig().qsim().getEndTime());
+            int timeBinSize = getTimeBin(scenario.getConfig().qsim().getEndTime().seconds());
             for (int tem = 0; tem <= timeBinSize; tem++) {
                 Map<CostType, Double> type2cost = new HashMap<>();
                 type2cost.put(CostType.STAY_TIME, 0.);
