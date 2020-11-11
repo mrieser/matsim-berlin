@@ -19,10 +19,8 @@
 
 package org.matsim.run;
 
-import static org.matsim.core.config.groups.ControlerConfigGroup.RoutingAlgorithmType.FastAStarLandmarks;
-
-import java.util.Arrays;
-
+import ch.sbb.matsim.routing.pt.raptor.SwissRailRaptorModule;
+import com.simunto.tramola.matsim.TramolaMatsimIntegration;
 import org.apache.log4j.Logger;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.TransportMode;
@@ -35,10 +33,11 @@ import org.matsim.core.controler.AbstractModule;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryLogging;
 import org.matsim.core.gbl.Gbl;
-import org.matsim.core.router.MainModeIdentifier;
 import org.matsim.core.scenario.ScenarioUtils;
 
-import ch.sbb.matsim.routing.pt.raptor.SwissRailRaptorModule;
+import java.util.Arrays;
+
+import static org.matsim.core.config.groups.ControlerConfigGroup.RoutingAlgorithmType.FastAStarLandmarks;
 
 /**
 * @author ikaddoura
@@ -59,10 +58,16 @@ public final class RunBerlinScenario {
 		}
 
 		Config config = prepareConfig( args ) ;
+
+		TramolaMatsimIntegration tramola = new TramolaMatsimIntegration(config);
+		tramola.init();
+
 		Scenario scenario = prepareScenario( config ) ;
 		Controler controler = prepareControler( scenario ) ;
-		controler.run() ;
 
+		controler.addOverridingModule(tramola);
+
+		controler.run() ;
 	}
 
 	public static Controler prepareControler( Scenario scenario ) {
